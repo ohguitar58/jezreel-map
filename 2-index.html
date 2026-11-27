@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/35-ol.css">
+        <link rel="stylesheet" href="resources/22-fontawesome-all.min.css">
+        <link href="resources/38-photon-geocoder-autocomplete.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/30-ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/41-qgis2web.css">
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <style>
+        .ol-overlay-container { z-index: 1100; }
+        .ol-popup { position: static; max-width: 420px; }
+        #popup-content { font-size: 21px; line-height: 1.35; max-height: 62vh; overflow-y: auto; }
+        #popup-content .pp-ko { font-size: 24px; font-weight: bold; }
+        #popup-content .pp-en { font-size: 20px; color: #444; margin-bottom: 4px; }
+        #popup-content .pp-cert { display: inline-block; font-size: 17.5px; padding: 1px 8px; border-radius: 10px; margin: 2px 0 6px; }
+        #popup-content .pp-cert.confirmed { background: #fde2e4; color: #801119; }
+        #popup-content .pp-cert.uncertain { background: #e8e8e8; color: #333; border: 1px dashed #555; }
+        #popup-content ul.desc { list-style-type: disc; padding-left: 1.2em; margin: 4px 0; }
+        #popup-content ul.desc li { margin-bottom: 0.3em; }
+        #popup-content .pp-ref { font-size: 19px; color: #555; margin-top: 4px; }
+        #popup-content img.pp-img { display: block; width: 100%; max-height: 34vh; object-fit: contain; background: #111; border-radius: 6px; margin: 6px 0 2px; }
+        #popup-content .pp-cap { font-size: 17px; color: #666; margin-bottom: 4px; }
+        #map-title { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;
+            background: rgba(255,255,255,0.9); border-radius: 8px; padding: 6px 16px; text-align: center;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.35); font-family: 'Noto Sans CJK KR','Noto Sans',sans-serif; color: #172033; pointer-events: none; max-width: 70vw; }
+        #map-title .t-ko { font-size: 25px; font-weight: bold; }
+        #map-title .t-en { font-size: 18px; color: #444; }
+        #legend { position: absolute; left: 8px; bottom: 36px; z-index: 1000; background: rgba(255,255,255,0.92);
+            border-radius: 8px; padding: 8px 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.35); font-family: sans-serif;
+            font-size: 18px; line-height: 1.5; color: #172033; max-width: 66vw; }
+        #legend .li { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+        #legend .lg-head { font-weight: bold; margin-top: 2px; }
+        #legend .lg-sep { border-top: 1px solid #c9c9c9; margin: 7px 0 3px; }
+        #legend .lg-toggle { cursor: pointer; }
+        #legend .lg-toggle input { width: 17px; height: 17px; margin: 0; flex: none; }
+        #top-right-container, .ol-layerswitcher { display: none !important; }
+        #legend .sw-c { width: 16px; height: 16px; background: #db1e2a; border: 2px solid #801119; transform: rotate(45deg); flex: none; margin: 0 2px; }
+        #legend .sw-u { width: 18px; height: 18px; border-radius: 50%; background: #ebebeb; border: 2.5px dashed #3c3c3c; flex: none; box-sizing: border-box; }
+        #legend .sw-r1 { width: 30px; border-top: 4px solid #db1e2a; flex: none; position: relative; margin-right: 6px; }
+        #legend .sw-r1::after { content: ''; position: absolute; right: -5px; top: -5px; width: 0; height: 0;
+            border-left: 9px solid #db1e2a; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+        #legend .sw-r2 { width: 30px; border-top: 4px dashed #28468c; flex: none; }
+        #legend .sw-v { width: 18px; height: 18px; background: rgba(120,180,120,0.35); border: 1.5px solid rgba(70,130,70,0.7); flex: none; box-sizing: border-box; }
+        @media (max-width: 650px) { #legend { font-size: 16px; bottom: 44px; } #map-title .t-ko { font-size: 20px; } #map-title .t-en { font-size: 15px; } #popup-content { max-width: 85vw; } }
+        </style>
+        <title>이스르엘이라 하라 2 · 예후의 행보 / Call Him Jezreel 2 · Jehu's Way</title>
+    </head>
+    <body>
+        <div id="map">
+            <div id="map-title"><div class="t-ko">이스르엘이라 하라 2 · 예후의 행보</div><div class="t-en">Call Him Jezreel 2 · Jehu's Way</div></div>
+            <div id="legend"><div class="lg-head">범례 · 레이어 / Legend · Layers</div>
+            </div>
+
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <script src="resources/43-qgis2web_expressions.js"></script>
+        <script src="./resources/23-functions.js"></script>
+        <script src="./resources/36-ol.js"></script>
+        <script src="./resources/31-ol-layerswitcher.js"></script>
+        <script src="resources/39-photon-geocoder-autocomplete.min.js"></script>
+        <script src="resources/37-olms.js"></script>
+        <script src="layers/4-_sitesJehuSites_0.js"></script><script src="layers/3-Jehusadvance_1.js"></script><script src="layers/2-Ahaziahsflight_2.js"></script><script src="layers/44-Jezreelflatland_3.js"></script>
+        <script src="styles/8-_sitesJehuSites_0_style.js"></script><script src="styles/7-Jehusadvance_1_style.js"></script><script src="styles/6-Ahaziahsflight_2_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/21-Autolinker.min.js"></script>
+        <script src="./resources/42-qgis2web.js"></script>
+        <script>
+        /* Custom popup layout (bilingual, bulleted descriptions, image) */
+        function ppBullets(t) {
+            if (!t) return '';
+            var parts = String(t).split(/(?<=[.。])\s+|;\s+/).filter(Boolean);
+            return '<ul class="desc">' + parts.map(function (p) { return '<li>' + p.replace(/[.。]$/, '') + '</li>'; }).join('') + '</ul>';
+        }
+        function createPopupField(f, keys, layer) {
+            var g = function (k) { var v = f.get(k); return v == null ? '' : String(v); };
+            var out = '<tr><td colspan="2">';
+            out += '<div class="pp-ko">' + g('name_ko') + '</div><div class="pp-en">' + g('name_en') + '</div>';
+            if (g('status')) {
+                out += '<span class="pp-cert ' + g('status') + '">' + g('certainty') + '</span>';
+            }
+            if (g('waypoints_ko')) {
+                out += '<div class="pp-en">' + g('waypoints_ko') + ' / ' + g('waypoints_en') + '</div>';
+            }
+            if (g('image')) {
+                out += '<img class="pp-img" src="images/' + g('image') + '" alt="' + g('name_ko') + '" />' +
+                       '<div class="pp-cap">AI 상상도 / AI illustration</div>';
+            }
+            out += ppBullets(g('desc_ko')) + ppBullets(g('desc_en'));
+            out += '<div class="pp-ref">' + g('ref_ko') + ' / ' + g('ref_en') + '</div>';
+            return out + '</td></tr>';
+        }
+        /* Merged legend + layer toggles: one list, symbol and checkbox on the same row.
+           Ahaziah's flight and the basemap stay drawn but have no row. */
+        (function () {
+            var toggles = [
+                {sw: 'sw-c', label: '확인된 장소 / Confirmed site', layers: [lyr_sites_confirmed]},
+                {sw: 'sw-u', label: '비정 / Proposed site', layers: [lyr_sites_proposed]},
+                {sw: 'sw-r1', label: "예후 진군 경로 / Jehu's advance", layers: [lyr_Jehusadvance_1]},
+                {sw: 'sw-v', label: '이스르엘 평야 평지 / Jezreel Valley flat land', layers: [lyr_Jezreelflatland_3]}
+            ];
+            var lg = document.getElementById('legend');
+            toggles.forEach(function (t) {
+                var row = document.createElement('label'); row.className = 'li lg-toggle';
+                var sym = document.createElement('span'); sym.className = t.sw; row.appendChild(sym);
+                var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = true;
+                cb.addEventListener('change', function () {
+                    t.layers.forEach(function (l) { l.setVisible(cb.checked); });
+                    if (window.lyr_sites_labels) { lyr_sites_labels.changed(); }
+                });
+                row.appendChild(cb);
+                var sp = document.createElement('span'); sp.textContent = t.label; row.appendChild(sp);
+                lg.appendChild(row);
+            });
+        })();
+        document.addEventListener('load', function (e) {
+            if (e.target && e.target.tagName === 'IMG' && e.target.closest && e.target.closest('#popup-content') &&
+                typeof overlayPopup !== 'undefined' && overlayPopup.getPosition()) {
+                var p = overlayPopup.getPosition();
+                overlayPopup.setPosition([p[0], p[1]]);
+            }
+        }, true);
+        </script>
+    </body>
+</html>
