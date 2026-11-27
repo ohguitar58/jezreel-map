@@ -8,8 +8,8 @@ var areaLabelFeatures__sitesJehuSites_0 = allFeatures__sitesJehuSites_0.filter(f
 var features__sitesJehuSites_0 = allFeatures__sitesJehuSites_0.filter(function(f){ return f.get('id') !== 'L1'; });
 /* Popup images (approved finals, see IMAGES.md in the map-3 package) */
 var popupImages__ = {
-  '1': 'map3-1-v3.jpg', '2': 'map3-2-v3.jpg', '3': 'figure2b-ahab-jezebel-vineyard.jpg',
-  '4': 'map3-4-v4.jpg', '5': 'map3-5-v4.jpg', '6': 'map3-6-samaria-baal-temple.jpg'
+  '1': '16-map3-1-v3.jpg', '2': '17-map3-2-v3.jpg', '3': '15-figure2b-ahab-jezebel-vineyard.jpg',
+  '4': '18-map3-4-v4.jpg', '5': '19-map3-5-v4.jpg', '6': '20-map3-6-samaria-baal-temple.jpg'
 };
 features__sitesJehuSites_0.forEach(function(f){ var im = popupImages__[f.get('id')]; if (im) { f.set('image', im); } });
 var jsonSource__sitesJehuSites_0 = new ol.source.Vector({
