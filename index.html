@@ -44,7 +44,8 @@
         }
         </style>
         <style>
-        .ol-overlay-container { z-index: 1100; }
+        .ol-overlay-container { z-index: 1100; pointer-events: none !important; }
+        .ol-overlay-container .ol-popup { pointer-events: auto !important; }
         .ol-popup { position: static; max-width: 420px; }
         #popup-content { font-size: 21px; line-height: 1.35; max-height: 62vh; overflow-y: auto; }
         #popup-content .pp-ko { font-size: 24px; font-weight: bold; }
@@ -128,10 +129,10 @@
                 out += '<div class="pp-imgrow">' +
                        '<img class="pp-img" src="images/' + g('image') + '" alt="' + g('name_ko') + '" />' +
                        '<img class="pp-img" src="images/' + g('image_b') + '" alt="' + g('name_ko') + '" />' +
-                       '</div><div class="pp-cap">AI 상상도 / AI illustration</div>';
+                       '</div><div class="pp-cap">' + (g('imgcap') || 'AI 상상도 / AI illustration') + '</div>';
             } else if (g('image')) {
                 out += '<img class="pp-img" src="images/' + g('image') + '" alt="' + g('name_ko') + '" />' +
-                       '<div class="pp-cap">AI 상상도 / AI illustration</div>';
+                       '<div class="pp-cap">' + (g('imgcap') || 'AI 상상도 / AI illustration') + '</div>';
             }
             out += ppBullets(g('desc_ko')) + ppBullets(g('desc_en'));
             out += '<div class="pp-ref">' + g('ref_ko') + ' / ' + g('ref_en') + '</div>';
