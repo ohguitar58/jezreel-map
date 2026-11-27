@@ -49,7 +49,7 @@ function labelStyle__sitesJehuSites_0(feature, resolution) {
             font: isArea ? "italic 24px 'Noto Sans CJK KR', 'Noto Sans', sans-serif" : "20px 'Noto Sans CJK KR', 'Noto Sans', sans-serif",
             textAlign: isArea ? 'center' : (right ? 'left' : 'right'), textBaseline: 'middle',
             offsetX: isArea ? 0 : (right ? 17 : -17),
-            offsetY: isArea ? 0 : 21,
+            offsetY: isArea ? 0 : 27,
             overflow: false,
             fill: new ol.style.Fill({color: '#000000'}),
             stroke: new ol.style.Stroke({color: 'rgba(255,255,255,0.95)', width: 4})
