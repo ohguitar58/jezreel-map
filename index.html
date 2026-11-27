@@ -45,40 +45,45 @@
         </style>
         <style>
         .ol-overlay-container { z-index: 1100; }
-        .ol-popup { position: static; max-width: 340px; }
-        #popup-content { font-size: 15px; line-height: 1.35; max-height: 62vh; overflow-y: auto; }
-        #popup-content .pp-ko { font-size: 17px; font-weight: bold; }
-        #popup-content .pp-en { font-size: 14.5px; color: #444; margin-bottom: 4px; }
-        #popup-content .pp-cert { display: inline-block; font-size: 12.5px; padding: 1px 8px; border-radius: 10px; margin: 2px 0 6px; }
+        .ol-popup { position: static; max-width: 420px; }
+        #popup-content { font-size: 21px; line-height: 1.35; max-height: 62vh; overflow-y: auto; }
+        #popup-content .pp-ko { font-size: 24px; font-weight: bold; }
+        #popup-content .pp-en { font-size: 20px; color: #444; margin-bottom: 4px; }
+        #popup-content .pp-cert { display: inline-block; font-size: 17.5px; padding: 1px 8px; border-radius: 10px; margin: 2px 0 6px; }
         #popup-content .pp-cert.confirmed { background: #fde2e4; color: #801119; }
         #popup-content .pp-cert.uncertain { background: #e8e8e8; color: #333; border: 1px dashed #555; }
         #popup-content ul.desc { list-style-type: disc; padding-left: 1.2em; margin: 4px 0; }
         #popup-content ul.desc li { margin-bottom: 0.3em; }
-        #popup-content .pp-ref { font-size: 13.5px; color: #555; margin-top: 4px; }
+        #popup-content .pp-ref { font-size: 19px; color: #555; margin-top: 4px; }
         #popup-content img.pp-img { display: block; width: 100%; max-height: 34vh; object-fit: contain; background: #111; border-radius: 6px; margin: 6px 0 2px; }
-        #popup-content .pp-cap { font-size: 12px; color: #666; margin-bottom: 4px; }
+        #popup-content .pp-cap { font-size: 17px; color: #666; margin-bottom: 4px; }
         #map-title { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;
             background: rgba(255,255,255,0.9); border-radius: 8px; padding: 6px 16px; text-align: center;
             box-shadow: 0 1px 6px rgba(0,0,0,0.35); font-family: 'Noto Sans CJK KR','Noto Sans',sans-serif; color: #172033; pointer-events: none; max-width: 70vw; }
-        #map-title .t-ko { font-size: 18px; font-weight: bold; }
-        #map-title .t-en { font-size: 13px; color: #444; }
+        #map-title .t-ko { font-size: 25px; font-weight: bold; }
+        #map-title .t-en { font-size: 18px; color: #444; }
         #legend { position: absolute; left: 8px; bottom: 36px; z-index: 1000; background: rgba(255,255,255,0.92);
             border-radius: 8px; padding: 8px 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.35); font-family: sans-serif;
-            font-size: 13px; line-height: 1.5; color: #172033; max-width: 60vw; }
+            font-size: 18px; line-height: 1.5; color: #172033; max-width: 66vw; }
         #legend .li { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
-        #legend .sw-c { width: 12px; height: 12px; background: #db1e2a; border: 2px solid #801119; transform: rotate(45deg); flex: none; margin: 0 2px; }
-        #legend .sw-u { width: 14px; height: 14px; border-radius: 50%; background: #ebebeb; border: 2.5px dashed #3c3c3c; flex: none; box-sizing: border-box; }
-        #legend .sw-r1 { width: 24px; border-top: 4px solid #db1e2a; flex: none; }
-        #legend .sw-r2 { width: 24px; border-top: 4px dashed #28468c; flex: none; }
-        #legend .sw-v { width: 14px; height: 14px; background: rgba(120,180,120,0.35); border: 1.5px solid rgba(70,130,70,0.7); flex: none; box-sizing: border-box; }
-        @media (max-width: 650px) { #legend { font-size: 12px; bottom: 44px; } #map-title .t-ko { font-size: 15px; } #map-title .t-en { font-size: 11px; } #popup-content { max-width: 85vw; } }
+        #legend .lg-head { font-weight: bold; margin-top: 2px; }
+        #legend .lg-sep { border-top: 1px solid #c9c9c9; margin: 7px 0 3px; }
+        #legend .lg-toggle { cursor: pointer; }
+        #legend .lg-toggle input { width: 17px; height: 17px; margin: 0; flex: none; }
+        #top-right-container, .ol-layerswitcher { display: none !important; }
+        #legend .sw-c { width: 16px; height: 16px; background: #db1e2a; border: 2px solid #801119; transform: rotate(45deg); flex: none; margin: 0 2px; }
+        #legend .sw-u { width: 18px; height: 18px; border-radius: 50%; background: #ebebeb; border: 2.5px dashed #3c3c3c; flex: none; box-sizing: border-box; }
+        #legend .sw-r1 { width: 30px; border-top: 4px solid #db1e2a; flex: none; }
+        #legend .sw-r2 { width: 30px; border-top: 4px dashed #28468c; flex: none; }
+        #legend .sw-v { width: 18px; height: 18px; background: rgba(120,180,120,0.35); border: 1.5px solid rgba(70,130,70,0.7); flex: none; box-sizing: border-box; }
+        @media (max-width: 650px) { #legend { font-size: 16px; bottom: 44px; } #map-title .t-ko { font-size: 20px; } #map-title .t-en { font-size: 15px; } #popup-content { max-width: 85vw; } }
         </style>
         <title>이스르엘이라 하라 2 · 예후의 행보 / Call Him Jezreel 2 · Jehu's Way</title>
     </head>
     <body>
         <div id="map">
             <div id="map-title"><div class="t-ko">이스르엘이라 하라 2 · 예후의 행보</div><div class="t-en">Call Him Jezreel 2 · Jehu's Way</div></div>
-            <div id="legend">
+            <div id="legend"><div class="lg-head">범례 · 레이어 / Legend · Layers</div>
                 <div class="li"><span class="sw-c"></span><span>확인된 장소 / Confirmed site</span></div>
                 <div class="li"><span class="sw-u"></span><span>비정 / Proposed site</span></div>
                 <div class="li"><span class="sw-r1"></span><span>예후 진군 경로 / Jehu's advance</span></div>
@@ -127,6 +132,26 @@
             out += '<div class="pp-ref">' + g('ref_ko') + ' / ' + g('ref_en') + '</div>';
             return out + '</td></tr>';
         }
+        /* Merged legend + layer toggles (replaces the separate layer switcher) */
+        (function () {
+            var toggles = [
+                {label: '예후 쿠데타_sites / Jehu Sites', layers: [lyr__sitesJehuSites_0, lyr_sites_labels]},
+                {label: "예후 진군 경로 / Jehu's advance", layers: [lyr_Jehusadvance_1]},
+                {label: "아하시야 도주 경로 / Ahaziah's flight", layers: [lyr_Ahaziahsflight_2]},
+                {label: '이스르엘 평야 평지 / Jezreel Valley flat land', layers: [lyr_Jezreelflatland_3]},
+                {label: 'Charted Territory (Esri)', layers: [lyr_ChartedTerritory_0]}
+            ];
+            var lg = document.getElementById('legend');
+            var sep = document.createElement('div'); sep.className = 'lg-sep'; lg.appendChild(sep);
+            toggles.forEach(function (t) {
+                var row = document.createElement('label'); row.className = 'li lg-toggle';
+                var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = true;
+                cb.addEventListener('change', function () { t.layers.forEach(function (l) { l.setVisible(cb.checked); }); });
+                row.appendChild(cb);
+                var sp = document.createElement('span'); sp.textContent = t.label; row.appendChild(sp);
+                lg.appendChild(row);
+            });
+        })();
         document.addEventListener('load', function (e) {
             if (e.target && e.target.tagName === 'IMG' && e.target.closest && e.target.closest('#popup-content') &&
                 typeof overlayPopup !== 'undefined' && overlayPopup.getPosition()) {
