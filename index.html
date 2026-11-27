@@ -56,9 +56,9 @@
         #popup-content ul.desc { list-style-type: disc; padding-left: 1.2em; margin: 4px 0; }
         #popup-content ul.desc li { margin-bottom: 0.3em; }
         #popup-content .pp-ref { font-size: 19px; color: #555; margin-top: 4px; }
-        #popup-content img.pp-img { display: block; width: 100%; height: auto; border-radius: 6px; margin: 6px 0 2px; }
+        #popup-content img.pp-img { display: block; width: auto; max-width: 100% !important; height: auto; max-height: 56vh !important; border-radius: 6px; margin: 6px auto 2px; }
         #popup-content .pp-imgrow { display: flex; gap: 6px; margin: 6px 0 2px; align-items: stretch; }
-        #popup-content .pp-imgrow img.pp-img { flex: 1 1 0; width: 0; min-width: 0; height: 300px; object-fit: cover; object-position: center 18%; margin: 0; }
+        #popup-content .pp-imgrow img.pp-img { flex: 1 1 0; width: 0; min-width: 0; height: 300px; max-height: 300px !important; max-width: none !important; object-fit: cover; object-position: center 18%; margin: 0; }
         #popup-content .pp-cap { font-size: 17px; color: #666; margin-bottom: 4px; }
         #popup-content .pp-sep { border: none; border-top: 2px solid #bbb; margin: 10px 0 8px; }
         #map-title { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;
@@ -66,7 +66,7 @@
             box-shadow: 0 1px 6px rgba(0,0,0,0.35); font-family: 'Noto Sans CJK KR','Noto Sans',sans-serif; color: #172033; pointer-events: none; max-width: 70vw; }
         #map-title .t-ko { font-size: 25px; font-weight: bold; }
         #map-title .t-en { font-size: 18px; color: #444; }
-        #legend { position: absolute; left: 8px; bottom: 36px; z-index: 1000; background: rgba(255,255,255,0.92);
+        #legend { position: absolute; right: 8px; top: 8px; z-index: 1000; background: rgba(255,255,255,0.92);
             border-radius: 8px; padding: 8px 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.35); font-family: sans-serif;
             font-size: 18px; line-height: 1.5; color: #172033; max-width: 66vw; }
         #legend .li { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
@@ -82,7 +82,7 @@
             border-left: 9px solid #db1e2a; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
         #legend .sw-r2 { width: 34px; height: 4px; background: repeating-linear-gradient(90deg, #28468c 0 9px, rgba(0,0,0,0) 9px 24px); flex: none; }
         #legend .sw-v { width: 18px; height: 18px; background: rgba(120,180,120,0.35); border: 1.5px solid rgba(70,130,70,0.7); flex: none; box-sizing: border-box; }
-        @media (max-width: 650px) { #legend { font-size: 16px; bottom: 44px; } #map-title .t-ko { font-size: 20px; } #map-title .t-en { font-size: 15px; } #popup-content { max-width: 85vw; } #popup-content .pp-imgrow img.pp-img { height: 210px; } }
+        @media (max-width: 650px) { #legend { font-size: 16px; top: 118px; } #map-title .t-ko { font-size: 20px; } #map-title .t-en { font-size: 15px; } #popup-content { max-width: 85vw; } #popup-content .pp-imgrow img.pp-img { height: 210px; } }
         </style>
         <title>이스르엘이라 하라 2 · 예후의 행보 / Call Him Jezreel 2 · Jehu's Way</title>
     </head>
