@@ -4,21 +4,33 @@ var placement = 'point';
    so the label layer can declutter overlapping text without hiding markers. */
 function markerStyle__sitesJehuSites_0(feature) {
     var status = String(feature.get('status'));
-    if (status === 'confirmed') {
+    var num = String(feature.get('id') || '');
+    function numStyle(color) {
         return new ol.style.Style({
+            text: new ol.style.Text({
+                text: num,
+                font: "bold 10.5px 'Noto Sans', sans-serif",
+                textAlign: 'center', textBaseline: 'middle',
+                fill: new ol.style.Fill({color: color})
+            }),
+            zIndex: 11
+        });
+    }
+    if (status === 'confirmed') {
+        return [new ol.style.Style({
             image: new ol.style.RegularShape({radius: 9.5, points: 4, displacement: [0, 0],
                 stroke: new ol.style.Stroke({color: 'rgba(128,17,25,1.0)', width: 1.8}),
                 fill: new ol.style.Fill({color: 'rgba(219,30,42,1.0)'})}),
             zIndex: 10
-        });
+        }), numStyle('#ffffff')];
     }
     /* uncertain (비정): hollow light circle with dashed dark outline */
-    return new ol.style.Style({
+    return [new ol.style.Style({
         image: new ol.style.Circle({radius: 10.5, displacement: [0, 0],
             stroke: new ol.style.Stroke({color: 'rgba(60,60,60,1.0)', lineDash: [5, 4], width: 2.6}),
             fill: new ol.style.Fill({color: 'rgba(235,235,235,1.0)'})}),
         zIndex: 10
-    });
+    }), numStyle('#3c3c3c')];
 }
 var style__sitesJehuSites_0 = function(feature, resolution){ return [markerStyle__sitesJehuSites_0(feature)]; };
 
