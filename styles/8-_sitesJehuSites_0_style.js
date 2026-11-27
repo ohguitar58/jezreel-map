@@ -9,7 +9,7 @@ function markerStyle__sitesJehuSites_0(feature) {
         return new ol.style.Style({
             text: new ol.style.Text({
                 text: num,
-                font: "bold 10.5px 'Noto Sans', sans-serif",
+                font: "bold 13px 'Noto Sans', sans-serif",
                 textAlign: 'center', textBaseline: 'middle',
                 fill: new ol.style.Fill({color: color})
             }),
@@ -40,7 +40,7 @@ function labelStyle__sitesJehuSites_0(feature, resolution) {
     return new ol.style.Style({
         text: new ol.style.Text({
             text: txt,
-            font: isArea ? "italic 17px 'Noto Sans CJK KR', 'Noto Sans', sans-serif" : "14px 'Noto Sans CJK KR', 'Noto Sans', sans-serif",
+            font: isArea ? "italic 24px 'Noto Sans CJK KR', 'Noto Sans', sans-serif" : "20px 'Noto Sans CJK KR', 'Noto Sans', sans-serif",
             textAlign: 'center', textBaseline: 'middle',
             offsetY: isArea ? 0 : 30,
             overflow: false,
