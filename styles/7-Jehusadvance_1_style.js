@@ -48,7 +48,7 @@ var style_Jehusadvance_1 = function(feature, resolution){
                 src: arrowSrc_Jehusadvance_1,
                 rotateWithView: true,
                 rotation: rotation,
-                scale: 0.85
+                scale: 1.25
             }),
             zIndex: 9
         }));
