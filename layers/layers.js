@@ -35,7 +35,7 @@ var lyr_Jehusadvance_1 = new ol.layer.Vector({
                 source:jsonSource_Jehusadvance_1, 
                 style: style_Jehusadvance_1,
                 popuplayertitle: '예후 진군 경로 / Jehu\'s advance',
-                interactive: true,
+                interactive: false,
                 title: '예후 진군 경로 / Jehu\'s advance'
             });
 var format_Ahaziahsflight_2 = new ol.format.GeoJSON();
@@ -50,7 +50,7 @@ var lyr_Ahaziahsflight_2 = new ol.layer.Vector({
                 source:jsonSource_Ahaziahsflight_2, 
                 style: style_Ahaziahsflight_2,
                 popuplayertitle: '아하시야 도주 경로 / Ahaziah\'s flight',
-                interactive: true,
+                interactive: false,
                 title: '아하시야 도주 경로 / Ahaziah\'s flight'
             });
 
