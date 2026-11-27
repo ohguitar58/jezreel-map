@@ -46,7 +46,7 @@
         <style>
         .ol-overlay-container { z-index: 1100; pointer-events: none !important; }
         .ol-overlay-container .ol-popup { pointer-events: auto !important; }
-        .ol-popup { position: static; max-width: 420px; }
+        .ol-popup { position: static; max-width: min(420px, calc(100vw - 36px)); box-sizing: border-box; }
         #popup-content { font-size: 21px; line-height: 1.35; max-height: 62vh; overflow-y: auto; }
         #popup-content .pp-ko { font-size: 24px; font-weight: bold; }
         #popup-content .pp-en { font-size: 20px; color: #444; margin-bottom: 4px; }
