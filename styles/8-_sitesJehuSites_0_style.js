@@ -44,8 +44,8 @@ function labelStyle__sitesJehuSites_0(feature, resolution) {
             textAlign: 'center', textBaseline: 'middle',
             offsetY: isArea ? 0 : 30,
             overflow: false,
-            fill: new ol.style.Fill({color: isArea ? '#5b3a1a' : '#172033'}),
-            stroke: new ol.style.Stroke({color: 'rgba(255,255,255,0.95)', width: 3.2})
+            fill: new ol.style.Fill({color: '#000000'}),
+            stroke: new ol.style.Stroke({color: 'rgba(255,255,255,0.95)', width: 4})
         }),
         zIndex: isArea ? 1 : 5
     });
