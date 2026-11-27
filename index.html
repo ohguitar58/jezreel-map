@@ -70,6 +70,10 @@
             border-radius: 8px; padding: 8px 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.35); font-family: sans-serif;
             font-size: 18px; line-height: 1.5; color: #172033; max-width: 66vw; }
         #legend .li { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+        /* Popup must always paint above the title box and legend: OL sets z-index:0 inline on
+           .ol-overlaycontainer-stopevent, creating a stacking context that would otherwise cap the
+           popup below them. pointer-events on that container are already none, so legend stays clickable. */
+        .ol-overlaycontainer-stopevent { z-index: 1200 !important; }
         #legend .lg-head { font-weight: bold; margin-top: 2px; }
         #legend .lg-sep { border-top: 1px solid #c9c9c9; margin: 7px 0 3px; }
         #legend .lg-toggle { cursor: pointer; }
