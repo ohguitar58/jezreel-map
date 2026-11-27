@@ -225,7 +225,7 @@ function onPointerMove(evt) {
         if (layer && feature instanceof ol.Feature && (layer.get("interactive") || layer.get("interactive") === undefined)) {
             featuresAndLayers.push({ feature, layer });
         }
-    });
+    }, { hitTolerance: 8 });
 
     // Iterate over the features and layers in reverse order
     for (var i = featuresAndLayers.length - 1; i >= 0; i--) {
@@ -403,7 +403,7 @@ function onSingleClickFeatures(evt) {
                 }
             }
         }
-    });
+    }, { hitTolerance: 8 });
     if (popupText === '<ul>') {
         popupText = '';
     } else {
