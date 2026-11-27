@@ -12,7 +12,7 @@ var popupImages__ = {
   '4': '18-map3-4-v4.jpg', '6': '19-map3-5-v4.jpg', '7': '20-map3-6-samaria-baal-temple.jpg'
 };
 /* Second image shown beside the first in the merged 2·5 popup (approved Joram portrait). */
-var popupImages2__ = { '5': '1-jehu-jezreel-gate-v4-8bcc5c9e.png' };
+var popupImages2__ = { '5': '1-jehu-jezreel-gate-v4-8bcc5c9e.png', '2': 'ahaziah-jezreel-chariot-v2.png' };
 features__sitesJehuSites_0.forEach(function(f){ var im = popupImages__[f.get('id')]; if (im) { f.set('image', im); } var im2 = popupImages2__[f.get('id')]; if (im2) { f.set('image_b', im2); } });
 /* Sites split into confirmed/proposed layers so the merged legend toggles each type. */
 var confirmedFeatures__sitesJehuSites_0 = features__sitesJehuSites_0.filter(function(f){ return f.get('status') === 'confirmed'; });
