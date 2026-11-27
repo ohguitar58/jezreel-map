@@ -32,7 +32,7 @@ function markerStyle__sitesJehuSites_0(feature) {
         zIndex: 10
     }), numStyle('#3c3c3c')];
 }
-var style__sitesJehuSites_0 = function(feature, resolution){ return [markerStyle__sitesJehuSites_0(feature)]; };
+var style__sitesJehuSites_0 = function(feature, resolution){ return markerStyle__sitesJehuSites_0(feature); };
 
 function labelStyle__sitesJehuSites_0(feature, resolution) {
     var txt = String(feature.get('label') || '').replace(/\\n/g, '\n');
