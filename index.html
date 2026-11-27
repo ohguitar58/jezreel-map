@@ -74,7 +74,19 @@
            .ol-overlaycontainer-stopevent, creating a stacking context that would otherwise cap the
            popup below them. pointer-events on that container are already none, so legend stays clickable. */
         .ol-overlaycontainer-stopevent { z-index: 1200 !important; }
-        #legend .lg-head { font-weight: bold; margin-top: 2px; }
+        #legend .lg-head { font-weight: bold; margin-top: 2px; cursor: pointer; user-select: none; }
+        #legend .lg-head::after { content: '\25BE'; float: right; margin-left: 10px; }
+        #legend.collapsed .lg-head::after { content: '\25B8'; }
+        #legend.collapsed .li, #legend.collapsed .lg-sep { display: none; }
+        #popup-content img.pp-img { cursor: zoom-in; }
+        /* Lightbox for full-size popup images */
+        #pp-lightbox { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.86);
+            z-index: 3000; display: none; align-items: center; justify-content: center; }
+        #pp-lightbox.on { display: flex; }
+        #pp-lightbox img { max-width: 96vw; max-height: 94vh; width: auto; height: auto; border-radius: 4px;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.6); }
+        #pp-lightbox .lb-close { position: absolute; top: 8px; right: 16px; color: #fff; font-size: 38px;
+            line-height: 1; cursor: pointer; font-family: sans-serif; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
         #legend .lg-sep { border-top: 1px solid #c9c9c9; margin: 7px 0 3px; }
         #legend .lg-toggle { cursor: pointer; }
         #legend .lg-toggle input { width: 17px; height: 17px; margin: 0; flex: none; }
@@ -86,7 +98,7 @@
             border-left: 9px solid #db1e2a; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
         #legend .sw-r2 { width: 34px; height: 4px; background: repeating-linear-gradient(90deg, #28468c 0 9px, rgba(0,0,0,0) 9px 24px); flex: none; }
         #legend .sw-v { width: 18px; height: 18px; background: rgba(120,180,120,0.35); border: 1.5px solid rgba(70,130,70,0.7); flex: none; box-sizing: border-box; }
-        @media (max-width: 650px) { #legend { font-size: 16px; top: 134px; } #map-title .t-ko { font-size: 20px; } #map-title .t-en { font-size: 15px; } #popup-content { max-width: 85vw; } #popup-content .pp-imgrow img.pp-img { height: 210px; } }
+        @media (max-width: 650px) { #legend { font-size: 16px; top: 134px; } #map-title .t-ko { font-size: 20px; } #map-title .t-en { font-size: 15px; } #popup-content { max-width: 85vw; } #popup-content .pp-imgrow img.pp-img { height: 210px; } #pp-lightbox .lb-close { top: 4px; right: 10px; font-size: 44px; } }
         </style>
         <title>이스르엘이라 하라 2 · 예후의 행보 / Call Him Jezreel 2 · Jehu's Way</title>
     </head>
@@ -174,6 +186,35 @@
                 row.appendChild(cb);
                 var sp = document.createElement('span'); sp.textContent = t.label; row.appendChild(sp);
                 lg.appendChild(row);
+            });
+        })();
+        /* Collapsible legend: tap the header to fold/unfold. Starts folded on mobile so the
+           legend never sits over an open popup. */
+        (function () {
+            var lg = document.getElementById('legend');
+            var head = lg.querySelector('.lg-head');
+            head.addEventListener('click', function () { lg.classList.toggle('collapsed'); });
+            if (window.matchMedia('(max-width: 650px)').matches) { lg.classList.add('collapsed'); }
+        })();
+        /* Lightbox: clicking any popup image shows the full uncropped image fit to screen.
+           Closes on tap, the X, or Esc. */
+        (function () {
+            var lb = document.createElement('div');
+            lb.id = 'pp-lightbox';
+            lb.innerHTML = '<span class="lb-close">&times;</span><img alt="" />';
+            document.body.appendChild(lb);
+            var lbImg = lb.querySelector('img');
+            function closeLb() { lb.classList.remove('on'); lbImg.removeAttribute('src'); }
+            lb.addEventListener('click', closeLb);
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeLb(); } });
+            document.getElementById('popup-content').addEventListener('click', function (e) {
+                var t = e.target;
+                if (t && t.tagName === 'IMG' && t.classList.contains('pp-img')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    lbImg.src = t.getAttribute('src');
+                    lb.classList.add('on');
+                }
             });
         })();
         document.addEventListener('load', function (e) {
