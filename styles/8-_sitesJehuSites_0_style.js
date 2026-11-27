@@ -9,7 +9,7 @@ function markerStyle__sitesJehuSites_0(feature) {
         return new ol.style.Style({
             text: new ol.style.Text({
                 text: num,
-                font: "bold 13px 'Noto Sans', sans-serif",
+                font: "bold 17px 'Noto Sans', sans-serif",
                 textAlign: 'center', textBaseline: 'middle',
                 fill: new ol.style.Fill({color: color})
             }),
@@ -18,7 +18,7 @@ function markerStyle__sitesJehuSites_0(feature) {
     }
     if (status === 'confirmed') {
         return [new ol.style.Style({
-            image: new ol.style.RegularShape({radius: 9.5, points: 4, displacement: [0, 0],
+            image: new ol.style.RegularShape({radius: 13, points: 4, displacement: [0, 0],
                 stroke: new ol.style.Stroke({color: 'rgba(128,17,25,1.0)', width: 1.8}),
                 fill: new ol.style.Fill({color: 'rgba(219,30,42,1.0)'})}),
             zIndex: 10
@@ -26,7 +26,7 @@ function markerStyle__sitesJehuSites_0(feature) {
     }
     /* uncertain (비정): hollow light circle with dashed dark outline */
     return [new ol.style.Style({
-        image: new ol.style.Circle({radius: 10.5, displacement: [0, 0],
+        image: new ol.style.Circle({radius: 13.5, displacement: [0, 0],
             stroke: new ol.style.Stroke({color: 'rgba(60,60,60,1.0)', lineDash: [5, 4], width: 2.6}),
             fill: new ol.style.Fill({color: 'rgba(235,235,235,1.0)'})}),
         zIndex: 10
