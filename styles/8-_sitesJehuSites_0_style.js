@@ -9,7 +9,7 @@ function markerStyle__sitesJehuSites_0(feature) {
         return new ol.style.Style({
             text: new ol.style.Text({
                 text: num,
-                font: "bold 21px 'Noto Sans', sans-serif",
+                font: num.length > 1 ? "bold 13px 'Noto Sans', sans-serif" : "bold 21px 'Noto Sans', sans-serif",
                 textAlign: 'center', textBaseline: 'middle',
                 fill: new ol.style.Fill({color: color})
             }),
@@ -36,7 +36,7 @@ var style__sitesJehuSites_0 = function(feature, resolution){ return markerStyle_
 
 /* Label sits lower-right (textAlign left) or lower-left (right) of the point,
    side chosen per site to avoid routes and neighbouring labels. */
-var labelSideRight__sitesJehuSites_0 = {'1': true, '2': true, '4': true, '6': true, '7': true};
+var labelSideRight__sitesJehuSites_0 = {'1': true, '2·5': true, '4': true, '6': true, '7': true};
 function labelStyle__sitesJehuSites_0(feature, resolution) {
     var txt = String(feature.get('label') || '').replace(/\\n/g, '\n');
     var fid = String(feature.get('id') || '');
